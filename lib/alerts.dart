@@ -65,8 +65,8 @@ class _AlertsViewState extends State<AlertsView> {
                     child: ListTile(
                   leading: actionIc,
                   title: Text(action),
-                  subtitle: Text(doc.get('dist').toString()+'mm of Mailbox filled'),
-                  trailing: Text(date + ' ' + time),
+                  // subtitle: Text(doc.get('dist').toString()+'mm of Mailbox filled'),
+                  subtitle: Text(date + ' ' + time),
                 ));
               }).toList(),
             );
