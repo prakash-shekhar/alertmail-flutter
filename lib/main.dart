@@ -20,7 +20,7 @@ class AlertMail extends StatelessWidget {
     return MaterialApp(
       title: 'Alert Mail',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
       themeMode: ThemeMode.system,
       home: const AlertMailHome(title: 'Alert Mail'),

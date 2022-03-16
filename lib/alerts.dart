@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
 
 class AlertsView extends StatefulWidget {
   const AlertsView({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class _AlertsViewState extends State<AlertsView> {
         centerTitle: true,
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: db.collection('alerts').orderBy('date').snapshots(),
+        stream: db.collection('alerts').orderBy('date', descending: true).snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(
@@ -59,14 +61,14 @@ class _AlertsViewState extends State<AlertsView> {
                       actionIc = const Icon(Icons.error);
                     }
                 }
-                String date = doc.id.substring(0, 10);
-                String time = doc.id.substring(11, 19);
+                // String date = doc.get('date').substring(0, 10);
+                // String time = doc.get('date').substring(11, 19);
                 return Card(
                     child: ListTile(
                   leading: actionIc,
                   title: Text(action),
                   // subtitle: Text(doc.get('dist').toString()+'mm of Mailbox filled'),
-                  subtitle: Text(date + ' ' + time),
+                  subtitle: Text(doc.get('date')),
                 ));
               }).toList(),
             );
